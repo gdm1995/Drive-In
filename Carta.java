@@ -40,5 +40,5 @@ public class Carta
 	public void setExpire(String expire)
 	{
 		this.expire = expire;
-	}
+	}//Prova
 }
