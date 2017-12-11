@@ -1,0 +1,108 @@
+@media screen and (max-width: 680px) 
+{
+	div#selezione
+	{
+		width:100%;
+		height:10%;
+	}
+	div#selezione h3
+	{
+		display:none;
+	}
+	
+	div#selezione ul
+	{
+		display:none;
+	}
+	div#selezione ul li
+	{
+		display:none;
+	}
+}
+
+@media screen and (min-width: 681px) 
+{
+	div#selezione table#mod
+	{
+		display:none;
+	}
+	div#selezione
+	{
+		max-width:297px;
+		min-height:425px;
+		width:30%;
+		border:1px solid black;
+	}
+	
+	ul
+	{
+		margin-left: 10%;  
+	}
+	
+}
+div#selezione table#mod
+	{
+	}
+
+div#selezione h3
+{
+	text-align:center;
+}
+
+ul li
+{
+	margin-top:5%;
+}
+
+div#selezione table#mod th,div#selezione table#mod td
+{
+	text-align:center;
+    border:none;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
+button
+{
+	background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    font-weight: bold;
+}
+
+ul li.Uomo
+{
+	list-style-image: url('../Imm/Uomo.png');
+}
+
+ul li.Donna
+{
+	list-style-image: url('../Imm/Donna.png');
+}
+
+ul li.Uomo #scarpeu
+{
+	list-style-image: url('../Imm/ScarpaUomo.png');
+}
+
+ul li.Uomo #accessoriu
+{
+	list-style-image: url('../Imm/BorsaUomo.png');
+}
+
+ul li.Donna #scarped
+{
+	list-style-image: url('../Imm/ScarpaDonna.png');
+}
+
+ul li.Donna #accessorid
+{
+	list-style-image: url('../Imm/BorsaDonna.png');
+}
+
+div#selezione
+{
+	margin-top:1%;
+	float:left;
+}
