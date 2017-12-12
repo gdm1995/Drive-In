@@ -27,7 +27,6 @@ public class Acquistato extends HttpServlet {
 	{
 		
 		// CLASSE DA MODIFICARE PER IS...	
-		//prova modifica da eclipse
 	}
 
 
