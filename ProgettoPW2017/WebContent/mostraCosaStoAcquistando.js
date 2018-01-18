@@ -1,6 +1,7 @@
 /**
  * Visualizza i prodotti che si stanno acquistando in un determinato momento all'interno del div "comprando"
  * @param prod prodotto selezionato che deve essere inserito tra quelli che si sta ipotizzando di acquistare
+ * Deprecated by the professor, anyway it was a nice job for me :)
  */
 function mostraCosaStoAcquistando(prod)
 {
