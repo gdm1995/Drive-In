@@ -15,7 +15,7 @@ function caricamento()
 			// alert (" ho ricevuto tot oggetti"+ obj.Carrello.length);
 			for (var i = 0; i < obj.Carrello.length; i++)
 			{
-				addCarrello(obj.Carrello[i]);
+				addCarrello(obj.Carrello[i],obj.Username);
 			}
 		}
 	};

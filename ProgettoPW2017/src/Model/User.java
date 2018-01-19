@@ -98,4 +98,10 @@ public class User
 	{
 		this.carta = x;
 	}
+	
+	public String toString() 
+	{
+		return "User [username=" + username + ", nome=" + nome + ", cognome=" + cognome + ", password=" + password
+				+ ", Amministratore=" + Amministratore + ", indirizzo=" + indirizzo + ", carta=" + carta + "]";
+	}
 }
