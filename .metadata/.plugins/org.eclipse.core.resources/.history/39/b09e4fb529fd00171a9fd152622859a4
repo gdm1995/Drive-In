@@ -1,0 +1,44 @@
+/**
+ * Provvede alla disposizione dei vari prodotti all'interno del carrello e alla
+ * ta
+ */
+function caricamento()
+{
+	// alert("buongiorno");
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function()
+	{
+		if (this.readyState == 4 && this.status == 200)
+		{
+			// alert("ricevo la seguente risposta" + this.responseText);
+			obj = JSON.parse(this.responseText);
+			// alert("oggetto convertito"+ obj);
+			// alert (" ho ricevuto tot oggetti"+ obj.Carrello.length);
+			if (obj.Carrello.length==0)
+			{alert("ciao");
+				var div = document.getElementById("showing");alert("ciao");
+				var h3 = document.createElement("h3"); alert("ciao");
+				var center = document.createElement("center");alert("ciao");
+				h3.createTextNode("Nessun prodotto inserito");alert("ciao");
+				center.appendChild(h3);alert("ciao");
+				div.appendChild(center);alert("ciao");
+				var bottone = document.getElementById("bottone");alert("ciao");
+				bottone.parentNode.removeChild(bottone);alert("ciao");
+				bottone.style.display = "none";alert("CIAO :D");
+			} else
+			{
+				var bottone = document.getElementById("bottone");
+				bottone.style.display = "block";
+				for (var i = 0; i < obj.Carrello.length; i++)
+				{
+					addCarrello(obj.Carrello[i], obj.Username);
+				}
+			}
+
+		}
+	};
+	xhttp.open("GET", "RecuperaDati", true);
+	// alert("salve");
+	xhttp.send();
+
+}

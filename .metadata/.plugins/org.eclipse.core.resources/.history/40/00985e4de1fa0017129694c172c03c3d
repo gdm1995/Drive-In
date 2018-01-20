@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Profile of <%=session.getAttribute("user")%></title>
+</head>
+<body>
+<body background="Imm/bianco.jpg">
+			<script type="text/javascript">window.onload=(INSERISCIJS)</script>
+			<%if(session.getAttribute("user")!=null) 
+				{%>
+				<%@include file="HeaderLogged.jsp" %>
+				<%}else{ %>
+			<%@ include file="Header.jsp" %>
+			<%} %>
+			<div id="showing"></div>
+		<footer>
+			<%@ include file="Footer.jsp" %>
+		</footer>
+</body>
+</html>

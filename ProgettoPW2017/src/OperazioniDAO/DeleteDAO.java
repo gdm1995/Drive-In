@@ -1,0 +1,42 @@
+
+package OperazioniDAO;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import Connessioni.DriverManagerConnectionPool;
+
+public class DeleteDAO
+{
+	private static final String TABLE_NAME1 = "selezionato";
+
+	/**
+	 * Cancella un determinato prodotto dal carrello di un determinato utente
+	 * @param codice Codice del prodotto da eliminare
+	 * @param colore Colore del prodotto da eliminare
+	 * @param taglia Taglia del prodotto da eliminare
+	 * @param username 
+	 * @throws SQLException in caso di errori SQL
+	 */
+	public synchronized void doDelete(String codice, String colore, String taglia, String username) throws SQLException
+	{
+		// inizializzo la connesione
+		Connection conn = null;
+		PreparedStatement prep = null;
+		
+		// scrivo la query
+		
+			String elimina = "DELETE FROM "+DeleteDAO.TABLE_NAME1+" WHERE (Codice = ? and ProdCol = ? and ProdTag = ? and Username=?)";
+			conn = DriverManagerConnectionPool.getConnection();
+			prep = conn.prepareStatement(elimina);
+
+			prep.setString(1, codice);
+			prep.setString(2, colore);
+			prep.setString(3, taglia);
+			prep.setString(4, username);
+
+			prep.executeUpdate();
+			conn.commit();
+	}
+}

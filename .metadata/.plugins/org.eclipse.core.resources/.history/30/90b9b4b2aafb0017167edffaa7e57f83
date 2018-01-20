@@ -1,0 +1,179 @@
+package OperazioniDAO;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import Connessioni.DriverManagerConnectionPool;
+import Model.Carta;
+import Model.User;
+
+/**
+ * Classe da utilizzare per recuperare e modificare le informazioni riguardo un determinato username
+ */
+public class DatiPersonaliDAO 
+{
+	private static final String TABLE_NAME = "utente";
+	public synchronized User recuperaInfo(String User) throws SQLException
+	{
+		Connection conn = null; // istanzio la connessione
+		PreparedStatement prep = null;
+		String retrieve = "SELECT *"+"FROM "+DatiPersonaliDAO.TABLE_NAME;
+		conn = DriverManagerConnectionPool.getConnection();
+		prep = conn.prepareStatement(retrieve);
+		ResultSet res = prep.executeQuery(); //in res salvo la tabella risultato della query
+		conn.commit();
+		User Utente = new User();
+		Utente.setUsername(User);
+		while (res.next())
+		{
+			if (res.getString("Username").equals(User))
+			{
+				Utente.setNome(res.getString("Nome"));
+				Utente.setCognome(res.getString("Cognome"));
+				Utente.setIndirizzo(res.getString("IndirizzoStandard"));
+				String digits = res.getString("Iban");
+				String lastDigits = digits.substring(digits.length()-4, digits.length());
+				Carta temp = new Carta("\"*******************"+lastDigits+"\"");
+				Utente.setCarta(temp);
+			}
+		}
+		return Utente;
+	}
+	
+	// Main per provare DatiPersonaliDAO
+	
+//	public static void main (String[] args) throws SQLException
+//	{
+//		DatiPersonaliDAO ciao = new DatiPersonaliDAO();
+//		User x = new User();
+//		x = ciao.recuperaInfo("Carlo");
+//		System.out.println();
+//	}
+	public synchronized void modificaNome(String username, String nome) throws SQLException
+	{
+		Connection conn = null; // istanzio la connessione
+		PreparedStatement prep = null;
+		try
+		{
+			String modifica = "UPDATE " + TABLE_NAME
+					+ " SET Nome=? WHERE (Username = ?)";
+			conn = DriverManagerConnectionPool.getConnection();
+			prep = conn.prepareStatement(modifica);
+			prep.setString(1, nome);
+			prep.setString(2, username);
+			prep.executeUpdate();
+			conn.commit();
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+			System.out.println("Errore nell'esecuzione del codice SQL");
+	
+		} finally
+		{
+			prep.close();
+			DriverManagerConnectionPool.releaseConnection(conn);
+		}
+		// Main per provare modificaNome
+	}
+//	public static void main(String[] args) throws SQLException
+//	{
+//		DatiPersonaliDAO ciao = new DatiPersonaliDAO();
+//		ciao.modificaNome("aaaa", "Blu");
+//	}
+	public synchronized void modificaCognome(String username, String cognome) throws SQLException
+	{
+		Connection conn = null; // istanzio la connessione
+		PreparedStatement prep = null;
+		try
+		{
+			String modifica = "UPDATE " + TABLE_NAME
+					+ " SET Cognome=? WHERE (Username = ?)";
+			conn = DriverManagerConnectionPool.getConnection();
+			prep = conn.prepareStatement(modifica);
+			prep.setString(1, cognome);
+			prep.setString(2, username);
+			prep.executeUpdate();
+			conn.commit();
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+			System.out.println("Errore nell'esecuzione del codice SQL");
+	
+		} finally
+		{
+			prep.close();
+			DriverManagerConnectionPool.releaseConnection(conn);
+		}
+	}
+//	
+//	public static void main(String[] args) throws SQLException
+//	{
+//		DatiPersonaliDAO ciao = new DatiPersonaliDAO();
+//		ciao.modificaCognome("aaaa", "Blu");
+//	}
+	
+	public synchronized void modificaIndirizzo(String username, String indirizzo) throws SQLException
+	{
+		Connection conn = null; // istanzio la connessione
+		PreparedStatement prep = null;
+		try
+		{
+			String modifica = "UPDATE " + TABLE_NAME
+					+ " SET IndirizzoStandard=? WHERE (Username = ?)";
+			conn = DriverManagerConnectionPool.getConnection();
+			prep = conn.prepareStatement(modifica);
+			prep.setString(1, indirizzo);
+			prep.setString(2, username);
+			prep.executeUpdate();
+			conn.commit();
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+			System.out.println("Errore nell'esecuzione del codice SQL");
+	
+		} finally
+		{
+			prep.close();
+			DriverManagerConnectionPool.releaseConnection(conn);
+		}
+	}
+//
+//	public static void main(String[] args) throws SQLException
+//	{
+//		DatiPersonaliDAO ciao = new DatiPersonaliDAO();
+//		ciao.modificaIndirizzo("aaaa", "Blu");
+//	}
+	
+	public synchronized void modificaIban(String username, String iban) throws SQLException
+	{
+		Connection conn = null; // istanzio la connessione
+		PreparedStatement prep = null;
+		try
+		{
+			String modifica = "UPDATE " + TABLE_NAME
+					+ " SET Iban=? WHERE (Username = ?)";
+			conn = DriverManagerConnectionPool.getConnection();
+			prep = conn.prepareStatement(modifica);
+			prep.setString(1, iban);
+			prep.setString(2, username);
+			prep.executeUpdate();
+			conn.commit();
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+			System.out.println("Errore nell'esecuzione del codice SQL");
+	
+		} finally
+		{
+			prep.close();
+			DriverManagerConnectionPool.releaseConnection(conn);
+		}
+	}
+//	public static void main(String[] args) throws SQLException
+//	{
+//		DatiPersonaliDAO ciao = new DatiPersonaliDAO();
+//		ciao.modificaIban("aaaa", "15649865986598785632986");
+//	}
+}

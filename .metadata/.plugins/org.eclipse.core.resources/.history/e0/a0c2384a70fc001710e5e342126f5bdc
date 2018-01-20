@@ -1,0 +1,73 @@
+
+package OperazioniDAO;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedList;
+
+import javax.servlet.http.HttpServlet;
+
+import Connessioni.DriverManagerConnectionPool;
+
+public class DeleteDAO
+{
+	private static final String TABLE_NAME1 = "selezionato";
+
+	/**
+	 * Cancella un determinato prodotto dall'inventario sul database
+	 * @param codice Codice del prodotto da eliminare
+	 * @param colore Colore del prodotto da eliminare
+	 * @param taglia Taglia del prodotto da eliminare
+	 * @throws SQLException in caso di errori SQL
+	 */
+	public synchronized void doDelete(String codice, String colore, String taglia) throws SQLException
+	{
+		// inizializzo la connesione
+		Connection conn = null;
+		PreparedStatement prep = null;
+		// scrivo la query
+		
+			String elimina = "DELETE FROM "+DeleteDAO.TABLE_NAME1+" WHERE (Codice = ? and ProdCol = ? and ProdTag = ?)";
+			conn = DriverManagerConnectionPool.getConnection();
+			prep = conn.prepareStatement(elimina);
+
+			prep.setString(1, codice);
+			prep.setString(2, colore);
+			prep.setString(3, taglia);
+
+			prep.executeUpdate();
+			conn.commit();
+	}
+
+	/**
+	 * Cancellazione di uno specifico elemento tra quelli selezionati di un
+	 * determinato utente
+	 * 
+	 * @param User Username dell'utente che ha selezionato i valori
+	 * @param codice Codice dell'oggetto da eliminare
+	 * @param colore  Colore dell'oggetto da eliminare
+	 * @param taglia Taglia dell'oggetto da eliminare
+	 * @throws SQLException In caso di errori nel codice SQL
+	 */
+	public synchronized void cancellaSelezionati(String User, String codice, String colore, String taglia)
+			throws SQLException
+	{
+		Connection conn = null;
+		PreparedStatement prep = null;
+		String elimina = "DELETE FROM TABLENAME_2" + " WHERE (Username = ? and Codice = ? "
+				+ "and ProdCol = ? and ProdTag = ?)";
+		conn = DriverManagerConnectionPool.getConnection();
+		prep = conn.prepareStatement(elimina);
+		prep.setString(1, User);
+		prep.setString(2, codice);
+		prep.setString(3, colore);
+		prep.setString(4, taglia);
+		// Eseguo la query
+		prep.executeUpdate();
+		conn.commit();
+	}
+}

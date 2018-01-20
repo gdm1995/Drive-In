@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+@media screen and (max-width: 680) 
+{
+	#showing table.showProduct
+	{
+		margin:40%;
+	}
+	
+	footer
+{
+	clear:both;
+	margin-top:40%;
+}
+
+#showing
+{
+	width:100%;
+	heigth:100%;
+}
+
+#pencil
+{
+	width:10%;
+}
+}

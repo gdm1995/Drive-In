@@ -1,0 +1,11 @@
+/**
+ * Aggiunge un prodotto con tutte le sue caratteristiche alla schermata che al
+ * momento si sta visualizzando (lì dove è presente il div con id "showing")
+ * 
+ * @param Carrello
+ *            Prodotto che stiamo per aggiungere con tutte le sue informazioni
+ */
+function addCarrello(Carrello)
+{
+	return ((Carrello.Prezzo + 0) * (Carrello.Dispo));
+}
