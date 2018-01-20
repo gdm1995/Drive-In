@@ -17,6 +17,10 @@ public class Carta
 		this.cvv = cvv;
 		this.expire = expire;
 	}
+	public Carta(String iban)
+	{
+		this.iban = iban;
+	}
 	public String getIban()
 	{
 		return iban;
