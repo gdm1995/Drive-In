@@ -1,0 +1,25 @@
+package OperazioniDAO;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import Connessioni.DriverManagerConnectionPool;
+
+/**
+ * Classe da utilizzare per recuperare le informazioni riguardo un determinato username
+ */
+public class DatiPersonaliDAO 
+{
+	private static final String TABLE_NAME = "utente";
+	public synchronized void recuperaInfo(String User) throws SQLException
+	{
+		Connection conn = null; // istanzio la connessione
+		PreparedStatement prep = null;
+		try
+		{
+			String retrieve = "SELECT *"+"FROM"+DatiPersonaliDAO.TABLE_NAME+"WHERE"+"Username="+User;
+			conn = DriverManagerConnectionPool.getConnection();
+			prep = conn.prepareStatement(insert);
+	}
+}

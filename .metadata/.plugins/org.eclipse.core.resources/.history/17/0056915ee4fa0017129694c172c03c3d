@@ -1,0 +1,56 @@
+package Controller;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Collection;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import Model.Prodotti;
+import Model.User;
+import OperazioniDAO.DatiPersonaliDAO;
+
+/**
+ * Utente fa da intermediario per conto del js DatiPersonaliDAO con il database (le DAO)
+ * e i model.
+ */
+
+@WebServlet("/Utente")
+public class Utente extends HttpServlet
+{
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException
+	{
+		String username = request.getParameter("Username");
+		DatiPersonaliDAO ris = new DatiPersonaliDAO();
+		try 
+		{
+			User temp = ris.recuperaInfo(username);
+		} catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		response.setContentType("text/plain");
+		response.getWriter().write(creare(temp).toString());
+	}
+	
+	private JSONObject creare (User temp)
+	{
+		JSONObject obj = new JSONObject(); // per ogni ogni iterazione mi crei un oggetto
+		obj.put("Username", temp.getUsername());
+		obj.put("Nome", temp.getNome());
+		obj.put("Cognome", temp.getCognome());
+		obj.put("IndirizzoStandard", temp.getIndirizzo());
+		obj.put("Iban", temp.getCarta().getIban());
+		JSONObject main = new JSONObject();
+		main.put("prodotti", ja);
+		return main;
+	}
+
+}

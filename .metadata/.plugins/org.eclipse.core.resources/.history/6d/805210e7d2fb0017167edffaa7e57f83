@@ -1,0 +1,102 @@
+function caricaProfilo()
+{
+	var persona;
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function()
+	{
+		if (this.readyState == 4 && this.status == 200)
+		{
+			
+			persona = JSON.parse(this.responseText);
+
+			
+			var tab,tr,td,div;
+			div = document.getElementById("showing");//div per indicare da dove inserire gli elementi
+			tab = document.createElement("table"); //creo la tabella per ogni singolo elemento
+			tab.setAttribute("class","showProduct"); //tutte le tabelle avranno la stessa classe per modificarle in header.css
+			tab.setAttribute("border","1"); //tab.style.borderCollapse = "collapse";
+			
+			tr = document.createElement("tr"); //creo la prima riga per l header
+			var th = document.createElement("th"); //creo l'unico header che visualizzerà il nome del prodotto
+			th.setAttribute("colspan",2);//rendo la riga larga come due colonnne
+			th.appendChild(document.createTextNode(persona.Username)); //creo un nodo che inserisco nell'header col nome del prodotto
+			tr.appendChild(th); //aggiungo l header prima creato alla riga
+			tab.appendChild(tr); //aggiungo alla tabella
+
+			tr = document.createElement ("tr");//creo la riga per il codice
+			td = document.createElement("td"); //creo l elemento dove effettivamete mettero la label per poi mettere il codice
+			td.appendChild(document.createTextNode("Nome"));//inserisco la label
+			tr.appendChild(td);
+			var nom = document.createElement("input");
+			nom.setAttribute("class","nuovi");
+			nom.value=persona.Nome;
+			tr.appendChild(nom);
+			tab.appendChild(tr);
+		
+			tr = document.createElement("tr");
+			td = document.createElement("td");
+			td.appendChild(document.createTextNode("Cognome"));
+			tr.appendChild(td);
+			var cognom = document.createElement("input");
+			cognom.setAttribute("class","nuovi");
+			cognom.value=persona.Cognome;
+			tr.appendChild(cognom);
+			tab.appendChild(tr);
+			
+			tr = document.createElement("tr");
+			td = document.createElement("td");
+			td.appendChild(document.createTextNode("Indirizzo"));
+			tr.appendChild(td);
+			var indirizzo = document.createElement("input");
+			indirizzo.setAttribute("class","nuovi");
+			indirizzo.value=persona.IndirizzoStandard;
+			tr.appendChild(indirizzo);
+			tab.appendChild(tr);
+			
+			tr = document.createElement("tr");
+			td = document.createElement("td");
+			td.appendChild(document.createTextNode("Iban"));
+			tr.appendChild(td);
+			var iban = document.createElement("input");
+			iban.setAttribute("class","nuovi");
+			iban.value=persona.Iban;
+			tr.appendChild(iban);
+			tab.appendChild(tr);
+			
+			tr = document.createElement("tr");
+			tr.setAttribute("id","last");
+			td = document.createElement("td");
+			td.setAttribute("colspan",2);
+			var quer="?Username="+persona.Username;
+			var input1 = document.createElement("input");
+			input1.setAttribute("type","image");
+			input1.src="Imm/Pencil.png";
+			input1.id="pencil";
+			input1.title="Salva Modifiche";
+			input1.onclick = function ()
+			{alert("here");
+				var xhtt = new XMLHttpRequest();
+				if(nom.value!=persona.Nome)
+					quer+="&Nome="+nom.value;
+				if(cognom.value!=persona.Cognome)
+					quer+="&Cognome="+cognom.value;
+				if(indirizzo.value!=persona.IndirizzoStandard)
+					quer+="&Indirizzo="+indirizzo.value;
+				if(iban.value!=persona.Iban)
+					quer+="&Iban="+Iban.value;
+				xhtt.open("GET", "ModificaDatiUtente"+quer, true);
+					////alert("sto inviando"+ quer);
+				xhtt.send();
+				alert("Modifica avvenuta con successo");
+			};
+			tr.appendChild(td);
+			tab.appendChild(tr);
+		}
+	};
+	xhttp.open("GET","Utente", true);
+		////alert("sto inviando"+ query);
+	xhttp.send();
+}
+	
+	
+	

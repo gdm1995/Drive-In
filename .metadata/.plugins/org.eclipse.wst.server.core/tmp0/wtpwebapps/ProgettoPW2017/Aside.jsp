@@ -1,0 +1,46 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Language" content="it">
+	<meta name=”description” content=”Drive-in.com–Negozio_di_scarpe_online”>
+	<meta name="author" content="Giulio Di Maria, Matteo Volpe">
+	<meta name="keywords" content="shoes, Drive-in, italian-style"> 
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="CSS/Aside.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="cambio.js"></script>
+	<script type="text/javascript" src="addProdotto.js"></script>
+	<script type="text/javascript" src="SelezioneVeloce.js"></script>
+	<script type="text/javascript" src="Inizialmente.js"></script>
+	<script type="text/javascript" src="clearTable.js"></script>
+	<script>
+	var flag=true;
+	window.onload = Inizialmente;
+	window.onresize = SelezioneVeloce(0);
+	</script>
+	<title>Aside</title>
+</head>
+<body background="Imm/bianco.jpg">
+	<div id="selezione">
+		<h3>Selezione Rapida</h3>
+		<p id="JustForMe"> </p>
+		<ul>
+			<li class="Uomo"><button onclick="cambio('Tutto','M',0)">Uomo</button>
+				<ul>
+					<li id="scarpeu"><button onclick="cambio('Scarpa','M',null,0)"> Scarpe </button></li>	
+					<li id="accessoriu" ><button onclick="cambio('Borsa','M',null,0)">Borse </button></li>
+				</ul>
+			</li>
+			<li class="Donna"><button onclick="cambio('Tutto','D',null,0)">Donna</button>
+				<ul>
+					<li id="scarped"> <button onclick="cambio('Scarpa','D',null,0)">Scarpe</button></li>
+					<li id="accessorid"><button onclick="cambio('Borsa','D',null,0)">Borse</button></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
