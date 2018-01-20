@@ -12,7 +12,7 @@
 <body background="bianco.jpg">
 	<h2>Contatti</h2>
 	<address> 
-		Gruppo composto da : <b>Giulio Di Maria (05121 03518)</b>, <b>Matteo Volpe (05121 03656)</b>, <b>Angela Ursi (05121 03743). </b> <br>
+		Gruppo composto da : <b>Giulio Di Maria (05121 03518)</b>, <b>Matteo Volpe (05121 03656)</b>. </b> <br>
 		Per info si prega di contattarci sulla rispettive e-mail unisa. 
 	</address>
 </body>

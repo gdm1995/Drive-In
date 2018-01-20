@@ -72,7 +72,7 @@ public class RecuperaDati extends HttpServlet
 			}
 		}
 		response.setContentType("text/plain");
-		response.getWriter().write(creare(prodotti, selezione).toString());
+		response.getWriter().write(creare(prodotti, selezione,Username).toString());
 		// System.out.println("Sto inviando "+ response);
 	}
 
@@ -93,7 +93,7 @@ public class RecuperaDati extends HttpServlet
 		return prod;
 	}
 
-	private JSONObject creare(ArrayList<Prodotti> pro, ArrayList<Selezionati> prendi)
+	private JSONObject creare(ArrayList<Prodotti> pro, ArrayList<Selezionati> prendi, String Username)
 	{
 		JSONArray ja = new JSONArray();
 		int i = 0;
@@ -101,6 +101,7 @@ public class RecuperaDati extends HttpServlet
 		for (Prodotti sel : pro)
 		{
 			JSONObject obj = new JSONObject();
+			obj.put("Username", Username);
 			obj.put("Codice", sel.getCodice());
 			obj.put("ProdTag", sel.getProdTag());
 			obj.put("ProdCol", sel.getProdCol());

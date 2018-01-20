@@ -72,13 +72,13 @@ public class RisultatoDAO extends HttpServlet
 		}
 		return prodotto;
 	}
-	// Main per testare RisultatoDAO.doRicerca
+//	 Main per testare RisultatoDAO.doRicerca
 
-	// public static void main (String[] args) throws SQLException
-	// {
-	// RisultatoDAO ciao = new RisultatoDAO();
-	// System.out.println(ciao.doRicerca("Scarpa","M"));
-	// }
+// public static void main (String[] args) throws SQLException
+//	 {
+//	RisultatoDAO ciao = new RisultatoDAO();
+//	 System.out.println(ciao.doRicerca("Scarpa","M"));
+// }
 	/**
 	 * Utilizzato per trovare un determinato prodotto, unicamente identificato, con tutte le sue caratteristiche dal
 	 * database

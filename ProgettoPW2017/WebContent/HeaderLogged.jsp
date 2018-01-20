@@ -23,7 +23,7 @@
 						</div>
 					</th>
 					<th class="accesso">
-						<p>Benvenuto <%=session.getAttribute("user")%></p>
+						<p>Benvenuto <a href="Profile.jsp"><%=session.getAttribute("user")%></a></p>
 					</th>
 					<!-- da linkare al carello -->
 					<th class="carts">

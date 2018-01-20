@@ -13,7 +13,6 @@
 
 function cambio(sol, sesso, stringa, val)
 {
-	// var txt= "";
 	var xhttp = new XMLHttpRequest();
 	// alert("mi hai passato"+sol+sesso+stringa+val);
 	xhttp.onreadystatechange = function()

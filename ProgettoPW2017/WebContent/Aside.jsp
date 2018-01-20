@@ -16,7 +16,6 @@
 	<script type="text/javascript" src="SelezioneVeloce.js"></script>
 	<script type="text/javascript" src="Inizialmente.js"></script>
 	<script type="text/javascript" src="clearTable.js"></script>
-	
 	<script>
 	var flag=true;
 	window.onload = Inizialmente;
@@ -25,7 +24,6 @@
 	<title>Aside</title>
 </head>
 <body background="Imm/bianco.jpg">
-<!--<script>windows.onload(cia);</script> -->
 	<div id="selezione">
 		<h3>Selezione Rapida</h3>
 		<p id="JustForMe"> </p>

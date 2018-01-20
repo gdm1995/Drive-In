@@ -9,11 +9,11 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import OperazioniDAO.DeleteDAO;
 
-import OperazioniDAO.DeleteProdDAO;
-
-/** Utilizzato per eliminare prodotti dal database, gli identificativi dei prodotti sono passati come parametri nella richiesta
+/** Utilizzato per eliminare prodotti dal carrello, gli identificativi dei prodotti sono passati come parametri nella richiesta
  */
 @WebServlet("/Delete")
 public class Delete extends HttpServlet
@@ -23,14 +23,16 @@ public class Delete extends HttpServlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws IOException,ServletException
 	{
 		// mi prendo gli input passati dall'iterazione json ( solo le chiavi)
+		HttpSession session = request.getSession();
+		String username = (String) session.getAttribute("user");
 		String codice= request.getParameter("codice");
 		String colore = request.getParameter("colore");
 		String taglia = request.getParameter("taglia");
 //		System.out.println(" sto ricevendo i seguenti parametri "+ codice + colore + taglia);
-		DeleteProdDAO delete = new DeleteProdDAO();
+		DeleteDAO delete = new DeleteDAO();
 		try
 		{
-			delete.doDelete(codice, colore, taglia);
+			delete.doDelete(codice, colore, taglia,username);
 		}catch(SQLException e )
 		{
 			e.printStackTrace();

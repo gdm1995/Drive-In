@@ -7,12 +7,11 @@
 <link rel="stylesheet" href="CSS/benvenuto.css">
 <script type="text/javascript" src="addCarrello.js"></script>
 <script type="text/javascript" src="caricamento.js"></script>
-<script type="text/javascript" src="mostraCosaStoAcquistando.js"></script>
 <script>
-	var acquistando=[];//Variabile globale per gestire gli elementi che si stanno effettivamente acquistando	
-	var entrato=false; //variabile globale per costruire una sola volta l'header dove vengono visualizzati i 
-					   //nomi delle colonne delle caratteristiche dei prodotti che si stanno comprando
-	var uscito=false; // per scrivere il totale e il bottone di acquista una sola volta
+	// 	var acquistando=[];//Variabile globale per gestire gli elementi che si stanno effettivamente acquistando	
+	// 	var entrato=false; //variabile globale per costruire una sola volta l'header dove vengono visualizzati i 
+	// 					   //nomi delle colonne delle caratteristiche dei prodotti che si stanno comprando
+	// 	var uscito=false; // per scrivere il totale e il bottone di acquista una sola volta
 </script>
 
 <title>Carrello</title>
@@ -20,10 +19,17 @@
 </head>
 <body onload="caricamento()">
 <body background="Imm/bianco.jpg">
-	<a href="Benvenuto.jsp"><img id="ritorno"  title="Home"
-		src="Imm/FRECCIA.png"> <script> entrato=false; uscito=false;</script> </a>
+	<a href="Benvenuto.jsp"><img id="ritorno" title="Home"
+		src="Imm/FRECCIA.png"> <script>
+			entrato = false;
+			uscito = false;
+		</script>
+	</a>
 	<h1 align="center">Prodotti Selezionati</h1>
 	<div id="showing"></div>
-	<div id="comprando"></div>
+	<form action="Conferma.jsp" method="get">
+		<center style="clear: both;"><button id="bottone">ordina e paga</button></center>
+	</form>
+	<!-- 	<div id="comprando"></div> -->
 </body>
 </html>

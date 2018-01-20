@@ -95,6 +95,7 @@ table.showProduct tr td input
 	align:center;
 }
 
+
 .ritornoAcquisti
 {
 	width:8%;
@@ -104,4 +105,26 @@ table.showProduct tr td input
 #tabellaAcquisti td
 {
 	text-align:center;
+}
+
+button
+{
+	margin-top:5%;
+	width: 280px;
+	height: 36px;
+	border-radius:10px;
+	background-color:#00FF00;
+	border-right-style: groove;
+	border-bottom-color: #FFFFFF;
+	border-top-width: medium; 
+	border-right-width: medium;
+	border-left-color: #FFFFFF; 
+	border-right-color: #FFFFFF; 
+	border-left-width: medium;
+	border-top-style: groove; 
+	border-left-style: groove;
+	border-bottom-width: medium; 
+	border-top-color: #FFFFFF;
+	border-bottom-style: groove; 
+	font-family: "Book Antiqua", "Times New Roman", "Serif";
 }
