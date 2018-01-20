@@ -9,7 +9,10 @@ public class Carta
 	private String cvv;
 	private String expire;
 
-	
+	public Carta(String iban)
+	{
+		this.iban = iban;
+	}
 	
 	public Carta(String iban, String cvv, String expire)
 	{
@@ -45,4 +48,10 @@ public class Carta
 	{
 		this.expire = expire;
 	}
+	
+	public String toString() 
+	{
+		return "Carta [iban=" + iban + ", cvv=" + cvv + ", expire=" + expire + "]";
+	}
+
 }

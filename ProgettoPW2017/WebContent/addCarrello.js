@@ -15,7 +15,7 @@ function addCarrello(Carrello)
 			
 			//alert(q);
 //			alert(tab.getAttribute("id"));
-			
+			//a
 			tr = document.createElement("tr"); //creo la prima riga per l header
 			var th = document.createElement("th"); //creo l'unico header che visualizzerà il nome del prodotto
 			th.setAttribute("colspan",2);//rendo la riga larga come due colonnne
@@ -93,53 +93,10 @@ function addCarrello(Carrello)
 			
 			tr = document.createElement("tr"); //procedo con la riga per l immagine 
 			var center = document.createElement("center"); //creo un elemento html5 per inserire l'immagine centrale
-			var img = document.createElement("input"); //creo l immagine
-			img.setAttribute("class","busta");
-			img.setAttribute("type","image");
-			img.src= "Imm/enter.jpg"; //assegno all immagine la sua giusta sorgente
-			img.title="Acquista questo elemento";
-			// scrivo la funzione
-			img.onclick = function ()
-			{
-				
-				if(!done)
-				{
-					done=true;
-					mostraCosaStoAcquistando(Carrello);
-					div.removeChild(tab);
-				}
-				else
-				{
-					div.removeChild(tab);
-				}
-				
-				
-				//PER DOPO
-				
-//				//alert(valid1[q-1]);
-////				valid1.splice(q-1,1);
-//				var obj;
-//				var today= new Date();
-//				var DataAcquisto= today.getDay+"-"+today.getMonth()+"-"+today.getYear(); // non prende due numeri
-//				var xhttp = new XMLHttpRequest();
-//				
-//				xhttp.onreadystatechange = function ()
-//				{
-//					if(this.readyState == 4 && this.status == 200)
-//						{
-//							obj=this.responseText;
-//							alert("Venduto "+ this.responseText);
-//						}
-//				};
-//				var query="?Codice="+Carrello.Codice+"&Colore="+Carrello.ProdCol+"&Taglia="+Carrello.ProdTag+"&Data="+DataAcquisto+"&Quantita="+Carrello.Dispo+"&Dispo="+Carrello.Dispo;
-//				xhttp.open("GET","Acquistato"+query, true);
-//				//alert("invio"+query);
-//				xhttp.send();
-			}
-			td = document.createElement("td");//creo il table data dove mettere il tutto 
-			td.appendChild(center); //aggiungo al td l involucro dell immagine
-			center.appendChild(img); //all involucro dell immagine concateno finalmente l'immagine 
-			tr.appendChild(td); //inserisco il tutto nella riga per l immagine)
+			var td = document.createElement("td"); //creo l immagine
+			td.appendChild(document.createTextNode("Elimina da carrello con la X --->"));
+			center.appendChild(td); 
+			tr.appendChild(center); //inserisco il tutto nella riga per l immagine)
 			
 			
 			//Eliminazione dell'elemento da quelli selezionati dal cliente
@@ -159,17 +116,18 @@ function addCarrello(Carrello)
 //	 			///alert(valid);
 				//document.getElementById("ciao").innerHTML= prod.Codice +" "+ " " +prod.ProdCol+ " " + prod.ProdTag +" "+ numeroEle;// devi inserire il p con id ciao per vederlo
 				var xhttp = new XMLHttpRequest();
-				var query="?codice="+prod.Codice+"&colore="+prod.ProdCol+"&taglia="+prod.ProdTag;
+				var query="?codice="+Carrello.Codice+"&colore="+Carrello.ProdCol+"&taglia="+Carrello.ProdTag;
 				xhttp.open("GET", "Delete" +query, true);
 	 			////alert("sto inviando"+ query);
 				xhttp.send();
+				
+				alert("Eliminato dal carrello :D");
 			}	
 			td = document.createElement("td");//creo il table data dove mettere il tutto 
 			td.appendChild(center); //aggiungo al td l involucro dell immagine
 			center.appendChild(btn); //all involucro dell immagine concateno finalmente l'immagine 
 			tr.appendChild(td); //inserisco il tutto nella riga per l immagine)
 			tab.appendChild(tr); // aggiungo alla tabella
-			
 					//IMPLEMEMTNARE PER MANDARE SERLET E SALVARE L'ACQUISTO
 				
 			/*td = document.createElement("td");//per il carrello
@@ -180,4 +138,5 @@ function addCarrello(Carrello)
 			tab.appendChild(tr);//aggiungo la riga con l involucro all interno della tabella
 			*/
 			div.appendChild(tab);//aggiungo la tabella creata nel suo div
+			return ((Carrello.Prezzo+0)*(Carrello.Dispo));
 		}

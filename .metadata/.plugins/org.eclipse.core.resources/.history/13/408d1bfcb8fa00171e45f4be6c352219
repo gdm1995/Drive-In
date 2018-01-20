@@ -1,0 +1,15 @@
+package OperazioniDAO;
+
+import java.sql.SQLException;
+
+/**
+ * Classe da utilizzare per recuperare le informazioni riguardo un determinato username
+ */
+public class DatiPersonaliDAO 
+{
+	private static final String TABLE_NAME = "utente";
+	public synchronized void recuperaInfo(String User) throws SQLException
+	{
+		
+	}
+}

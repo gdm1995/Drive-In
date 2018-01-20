@@ -1,0 +1,40 @@
+footer {
+	clear: both;
+	margin-top: 40%;
+}
+
+#showing {
+	width: 100%;
+	heigth: 100%;
+}
+
+#bottone {
+	margin-top: 5%;
+	width: 350px;
+	height: 36px;
+	border-radius: 10px;
+	background-color: #00FF00;
+	border-right-style: groove;
+	border-bottom-color: #FFFFFF;
+	border-top-width: medium;
+	border-right-width: medium;
+	border-left-color: #FFFFFF;
+	border-right-color: #FFFFFF;
+	border-left-width: medium;
+	border-top-style: groove;
+	border-left-style: groove;
+	border-bottom-width: medium;
+	border-top-color: #FFFFFF;
+	border-bottom-style: groove;
+	font-family: "Book Antiqua", "Times New Roman", "Serif";
+}
+
+#ritorno {
+	float: left;
+	margin-left: 2%;
+	min-width: 30px;
+	width: 2%;
+	text-align: center;
+	align: center;
+}
+}

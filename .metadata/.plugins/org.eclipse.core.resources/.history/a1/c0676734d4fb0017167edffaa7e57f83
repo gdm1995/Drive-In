@@ -1,0 +1,108 @@
+@CHARSET "UTF-8";
+@media screen and (max-width: 680) 
+{
+	#showing table.showProduct
+	{
+		margin-top:25%;
+	}
+}
+
+
+aside
+{
+	clear: left;
+}
+
+footer
+{
+	clear:both;
+	margin-top:20%;
+}
+
+
+#showing
+{
+	width:100%;
+	heigth:100%;
+}
+
+
+#showing table input.nuovi
+{
+	width:100%;	
+	border:none;
+}
+
+table.showProduct tr td img
+{
+	height:100%;
+	width:100%;
+}
+
+#showing table.showProduct
+{
+	height: 60%;
+	width: 17%;
+	min-width:180px;
+	max-height:380px;
+	max-width:250px;
+	margin-left:3%;
+	margin-top:1%;
+	margin-bottom:2%;
+	float:left;
+}
+
+
+table.showProduct tr 
+{
+	width:100%;
+}
+
+table.showProduct tr th
+{
+	max-height:10%;
+	width:100%;
+}
+
+
+table.showProduct tr td input
+{
+	width:40%;
+}
+
+#pencil
+{
+	width:30%;
+	padding-right:15px;
+}
+
+#numeroOrd
+{
+	margin: 0% 5%;
+}
+
+.busta
+{
+	width:60%;
+}
+
+#ritorno 
+{
+	float:left;	
+	margin-left: 2%;
+	min-width:30px;
+	width:2%;
+	text-align:center;
+	align:center;
+}
+
+.ritornoAcquisti
+{
+	width:8%;
+}
+
+
+#tabellaAcquisti td
+{
+	text-align:center;
+}
