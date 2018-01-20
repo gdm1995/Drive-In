@@ -15,7 +15,7 @@ function addCarrello(Carrello)
 			
 			//alert(q);
 //			alert(tab.getAttribute("id"));
-			
+			//a
 			tr = document.createElement("tr"); //creo la prima riga per l header
 			var th = document.createElement("th"); //creo l'unico header che visualizzerà il nome del prodotto
 			th.setAttribute("colspan",2);//rendo la riga larga come due colonnne
