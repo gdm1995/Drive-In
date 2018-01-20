@@ -18,8 +18,7 @@
 	<script type="text/javascript" src="clearTable.js"></script>
 	<script>
 	var flag=true;
-	window.onload = Inizialmente;
-	window.onresize = SelezioneVeloceAmm(0);
+	window.onresize = SelezioneVeloceAmm();
 	</script>
 	<title>Aside</title>
 </head>

@@ -58,7 +58,7 @@
 		<aside>
 			<%@ include file="Aside.jsp"%>
 		</aside>
-		<img src="Imm/BorseDonna.PNG" alt="BorsePromo" width="38%" vspace="20"
+		<img src="Imm/BorseDonna.PNG" alt="BorsePromo" width="38%" vspace="18"
 			onclick="cancella()" id="img1">
 		<script type="text/javascript">
 			function cancella()
@@ -68,7 +68,7 @@
 				cambio('Borsa', 'D', null, 0);
 			}
 		</script>
-		<img src="Imm/ScarpeUomo.PNG" alt="BorsePromo" width="42%" vspace="10"
+		<img src="Imm/ScarpeUomo.PNG" alt="BorsePromo" width="40%" vspace="10"
 			onclick="cancella1()" id="img2">
 		<script type="text/javascript">
 			function cancella1()
