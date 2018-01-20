@@ -17,9 +17,7 @@ public class Acquistato extends HttpServlet {
  int r =0;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		
-		// CLASSE DA MODIFICARE PER IS	
-	
+		// CLASSE DA MODIFICARE PER IS...	
 	}
 
 
