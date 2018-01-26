@@ -68,4 +68,64 @@ public class ListaTuttiProdottiTipoDAO
 //			ciaone = ciao.doRicerca("Scarpa");
 //			System.out.println(ciaone);
 //		}
+	
+	/**
+	 * Utilizzato per trovare un determinato prodotto unicamente identificato con tutte le sue caratteristiche dal
+	 * database
+	 * @param codice Codice del prodotto ricercato
+	 * @param colore Colore del prodotto ricercato
+	 * @param tag Taglia del prodotto ricercato
+	 * @return Ritorna il prodotto ricercato che presenta tutte e tre i caratteri identificativi
+	 * @throws SQLException In caso di problemi durante l'esecuzione del codice SQL
+	 */
+	public synchronized Prodotti FindIt(String codice, String colore, String tag)
+			throws SQLException
+	{
+		Connection conn = null;
+		PreparedStatement prep = null;
+		Prodotti prodotto = new Prodotti();
+		String controllo = "SELECT * " + "FROM " + ListaTuttiProdottiTipoDAO.TABLE_NAME
+				+ " WHERE  Codice=? AND ProdCol=? AND ProdTag=?";
+		try
+		{
+			conn = DriverManagerConnectionPool.getConnection();
+			prep = conn.prepareStatement(controllo);
+			prep.setString(1, codice);
+			prep.setString(2, colore);
+			prep.setString(3, tag);
+			// eseguo la query
+			ResultSet res = prep.executeQuery();
+			while (res.next())
+			{
+				prodotto.setCodice(res.getString("Codice"));
+				prodotto.setProdCol(res.getString("ProdCol"));
+				prodotto.setProdTag(res.getString("ProdTag"));
+				prodotto.setDisp(res.getString("disp"));
+				prodotto.setSesso(res.getString("Sesso"));
+				prodotto.setPrezzo(res.getDouble("Prezzo"));
+				prodotto.setNome(res.getString("Nome"));
+				prodotto.setNomeI(res.getString("NomeImmagine"));
+			}
+		} catch (SQLException e)
+		{
+			e.printStackTrace();
+			System.out.println("Problemi durante l'esecuzione del codice SQL");
+		} finally
+		{
+			prep.close();
+			DriverManagerConnectionPool.releaseConnection(conn);
+		}
+		// System.out.println(prodotto);
+		return prodotto;
+	}
+	
+	// Main per provare ListaTuttiProdottiTipoDAO
+	
+//	public static void main (String[] args) throws SQLException
+//	{
+//		ListaTuttiProdottiTipoDAO ciao = new ListaTuttiProdottiTipoDAO();
+//		Prodotti ciaone = new Prodotti();
+//		ciaone = ciao.FindIt("A100", "Rosso", "45");
+//		System.out.println(ciaone+" "+ciaone.getDisp());
+//	}
 }

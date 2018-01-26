@@ -110,7 +110,7 @@ public class RisultatoDAO extends HttpServlet
 				prodotto.setCodice(res.getString("Codice"));
 				prodotto.setProdCol(res.getString("ProdCol"));
 				prodotto.setProdTag(res.getString("ProdTag"));
-				prodotto.setDisp(res.getString("disp"));
+				prodotto.setDisp(res.getString("Disp"));
 				prodotto.setSesso(res.getString("Sesso"));
 				prodotto.setPrezzo(res.getDouble("Prezzo"));
 				prodotto.setNome(res.getString("Nome"));
