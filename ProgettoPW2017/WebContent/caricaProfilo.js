@@ -63,7 +63,7 @@ function caricaProfilo()
 			
 			tr = document.createElement("tr");
 			td = document.createElement("td");
-			td.appendChild(document.createTextNode("inserisci anche al posto degli asterischi"));
+			td.appendChild(document.createTextNode("Iban (inserisci anche al posto degli asterischi e senza spazi)"));
 			tr.appendChild(td);
 			var iban = document.createElement("input");
 			center = document.createElement("center");

@@ -24,32 +24,31 @@ public class AcquistaDAO
 	 * @param data Data di acquisto
 	 * @param disp Quantit‡ acquistata dall'utente di quel determinato prodotto
 	 * @param indirizzo Indirizzo a cui Ë stato inviato il contenuto
+	 * @param nOrdine numero dell'ordine a cui appartiene il prodotto
 	 * @throws SQLException In caso di errore nell'esecuzione del codice SQL
 	 */
-	public synchronized void acquista(String User, String codice, String colore, String taglia, String data,
-			String disp, String indirizzo) throws SQLException
+	public synchronized void acquista(String user, String codice, String colore, String taglia, String data,
+			String disp, String indirizzo, String nOrdine) throws SQLException
 	{
 		Connection conn = null; // istanzio la connessione
 		PreparedStatement prep = null;
 		try
 		{
 			String insert = "INSERT INTO " + AcquistaDAO.TABLE_NAME
-					+ "(Username,Codice,ProdCol,ProdTag,DataAcquisto,Quantit‡S,IndirizzoC) " 
-					+ "VALUES (?,?,?,?,?,?,?)";
+					+ "(Username,Codice,ProdCol,ProdTag,DataAcquisto,Quantit‡S,IndirizzoC, CodiceOrdine) " 
+					+ "VALUES (?,?,?,?,?,?,?,?)";
 			conn = DriverManagerConnectionPool.getConnection();
 			prep = conn.prepareStatement(insert);
-			prep.setString(1, User);
+			prep.setString(1, user);
 			prep.setString(2, codice);
 			prep.setString(3, colore);
 			prep.setString(4, taglia);
 			prep.setString(5, data);
 			prep.setString(6, disp);
 			prep.setString(7, indirizzo);
+			prep.setString(8, nOrdine);
 			prep.executeUpdate();
 			conn.commit();
-			// " WHERE Codice = ? & ProdCol = ? & ProdTag = ? & ProdottoTipo = ?
-			// & #Disp = ? & Sesso = ? & Prezzo = ? & Nome = ? & NomeImmagine
-			// =?"
 		} catch (SQLException e)
 		{
 			e.printStackTrace();
@@ -66,6 +65,6 @@ public class AcquistaDAO
 //		public static void main (String[] args) throws SQLException
 //		{
 //			AcquistaDAO ciao = new AcquistaDAO();
-//			ciao.acquista("Carlo", "F4", "Rosso", "46", "27-01-1995", "2", "Via Roma, 56");;
+//			ciao.acquista("Carlo", "F5", "Verde", "M", "27/01/2018 alle 15:36", "2", "Via Carlo, 52","480984940");
 //		}
 }
