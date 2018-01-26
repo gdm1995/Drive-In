@@ -1,0 +1,68 @@
+function caricaProfilo1()
+{
+	var persona;
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function()
+	{
+		if (this.readyState == 4 && this.status == 200)
+		{
+			persona = JSON.parse(this.responseText);
+			
+			var tab,tr,td,div,center;
+			
+			div = document.getElementById("showing1");//div per indicare da dove inserire gli elementi
+			tab = document.createElement("table"); //creo la tabella per ogni singolo elemento
+			tab.setAttribute("class","showProduct"); //tutte le tabelle avranno la stessa classe per modificarle in header.css
+			tab.setAttribute("border","1"); //tab.style.borderCollapse = "collapse";
+
+			tr = document.createElement("tr"); //creo la prima riga per l header
+			var th = document.createElement("th"); //creo l'unico header che visualizzerà il nome del prodotto
+			th.setAttribute("colspan",2);//rendo la riga larga come due colonnne
+			th.appendChild(document.createTextNode(persona.Username)); //creo un nodo che inserisco nell'header col nome del prodotto
+			tr.appendChild(th); //aggiungo l header prima creato alla riga
+			tab.appendChild(tr); //aggiungo alla tabella
+
+			tr = document.createElement ("tr");//creo la riga per il codice
+			td = document.createElement("td"); //creo l elemento dove effettivamete mettero la label per poi mettere il codice
+			td.appendChild(document.createTextNode("Nome"));//inserisco la label
+			tr.appendChild(td);
+			center = document.createElement("center");
+			center.appendChild(persona.Nome);
+			tr.appendChild(center);
+			tab.appendChild(tr);
+			alert("1");
+			tr = document.createElement("tr");
+			td = document.createElement("td");
+			td.appendChild(document.createTextNode("Cognome"));
+			tr.appendChild(td);
+			center = document.createElement("center");
+			center.appendChild(persona.Cognome);
+			tr.appendChild(center);
+			tab.appendChild(tr);
+			alert("12");
+			tr = document.createElement("tr");
+			td = document.createElement("td");
+			td.appendChild(document.createTextNode("Indirizzo"));
+			tr.appendChild(td);
+			center = document.createElement("center");
+			center.appendChild(persona.IndirizzoStandard);
+			tr.appendChild(center);
+			tab.appendChild(tr);
+			
+			tr = document.createElement("tr");
+			td = document.createElement("td");
+			td.appendChild(document.createTextNode("Iban"));
+			tr.appendChild(td);
+			center = document.createElement("center");
+			center.appendChild(persona.Iban);
+			tr.appendChild(center);
+			tab.appendChild(tr);alert("1");
+		}
+	};
+	xhttp.open("GET","Utente", true);
+		////alert("sto inviando"+ query);
+	xhttp.send();
+}
+	
+	
+	

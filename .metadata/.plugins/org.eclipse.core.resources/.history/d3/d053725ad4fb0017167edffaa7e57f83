@@ -1,0 +1,8 @@
+@CHARSET "UTF-8";
+@media screen and (max-width: 680) 
+{
+	#showing table.showProduct
+	{
+		margin:40%;
+	}
+}

@@ -72,8 +72,8 @@ public class RecuperaDati extends HttpServlet
 			}
 		}
 		response.setContentType("text/plain");
-		response.getWriter().write(creare(prodotti, selezione,Username).toString());
-		// System.out.println("Sto inviando "+ response);
+		response.getWriter().write(creare(prodotti, selezione,Username).toString());//passo in creare tutti i prodotti con tutte le loro caratteristiche
+		//che ho trovato cercando prima tutti i prodotti selezionati da un utente nel carrello
 	}
 
 	/**
@@ -109,8 +109,9 @@ public class RecuperaDati extends HttpServlet
 			obj.put("NomeI", sel.getNomeI());
 			obj.put("Sesso", sel.getSesso());
 			obj.put("Prezzo", sel.getPrezzo());
+			obj.put("DisponibTotale", sel.getDisp());//mi prendo la quantità realedelProd
 			// vado a modificare la disonibilita all'interno dei bean con la quantita che l'utente ha selezionato
-			obj.put("Dispo", prendi.get(i).getQuantita());
+			obj.put("Dispo", prendi.get(i).getQuantita());//mi prendo la quantità selezionata dal carrello
 			ja.put(obj);
 			i++;
 			// System.out.println("incremento"+i);

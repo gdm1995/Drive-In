@@ -15,7 +15,7 @@ function addCarrello(Carrello)
 			
 			//alert(q);
 //			alert(tab.getAttribute("id"));
-			
+			//a
 			tr = document.createElement("tr"); //creo la prima riga per l header
 			var th = document.createElement("th"); //creo l'unico header che visualizzerà il nome del prodotto
 			th.setAttribute("colspan",2);//rendo la riga larga come due colonnne
@@ -120,6 +120,7 @@ function addCarrello(Carrello)
 				xhttp.open("GET", "Delete" +query, true);
 	 			////alert("sto inviando"+ query);
 				xhttp.send();
+				
 				alert("Eliminato dal carrello :D");
 			}	
 			td = document.createElement("td");//creo il table data dove mettere il tutto 
@@ -137,4 +138,5 @@ function addCarrello(Carrello)
 			tab.appendChild(tr);//aggiungo la riga con l involucro all interno della tabella
 			*/
 			div.appendChild(tab);//aggiungo la tabella creata nel suo div
+			return ((Carrello.Prezzo+0)*(Carrello.Dispo));
 		}

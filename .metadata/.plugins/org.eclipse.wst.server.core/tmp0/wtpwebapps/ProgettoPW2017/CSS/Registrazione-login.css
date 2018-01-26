@@ -1,0 +1,62 @@
+@CHARSET "UTF-8";
+
+
+input
+{
+	border-radius:10px;
+	border-color:blue;
+}
+
+h1
+{
+	font-family: Rockwell Extra Bold;
+}
+
+table
+{
+	color: Gray;
+	border-right-style: groove;
+	border-bottom-color: #FFFFFF;
+	border-top-width: medium; 
+	border-right-width: medium;
+	border-left-color: #FFFFFF; 
+	border-right-color: #FFFFFF; 
+	border-left-width: medium;
+	border-top-style: groove; 
+	border-left-style: groove;
+	border-bottom-width: medium; 
+	border-top-color: #FFFFFF;
+	border-bottom-style: groove; 
+	font-family: "Book Antiqua", "Times New Roman", "Serif";
+}
+
+form
+{
+	height: 214px;
+}
+
+input
+{
+	 width: 280px;
+	 height: 36px;
+}
+button
+{
+	width: 280px;
+	height: 36px;
+	border-radius:10px;
+	border-color:blue;
+	font-family: Rockwell Extra Bold;
+}
+
+h1,h2
+{
+	text-align:center; 
+}
+
+div
+{
+	text-align:center;
+	width:20%;
+	margin:0 auto;
+}

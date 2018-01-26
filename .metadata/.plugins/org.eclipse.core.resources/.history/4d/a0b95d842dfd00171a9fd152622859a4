@@ -1,0 +1,142 @@
+
+/**Aggiunge un prodotto con tutte le sue caratteristiche alla schermata che al momento si sta visualizzando (lì dove è presente il div con id "showing")
+ * @param Carrello Prodotto che stiamo per aggiungere con tutte le sue informazioni
+ */
+function addCarrello(Carrello)
+		{
+			//elementi principali della tabella
+			var tab,tr,td,div;
+			var done=false; //Per verificare se una determinata verifica viene effettuata oppure no
+			div = document.getElementById("showing");//div per indicare da dove inserire gli elementi
+			tab = document.createElement("table"); //creo la tabella per ogni singolo elemento
+			tab.setAttribute("class","showProduct"); //tutte le tabelle avranno la stessa classe per modificarle in header.css
+			tab.setAttribute("border","1");
+//			tab.style.borderCollapse = "collapse";
+			
+			//alert(q);
+//			alert(tab.getAttribute("id"));
+			
+			tr = document.createElement("tr"); //creo la prima riga per l header
+			var th = document.createElement("th"); //creo l'unico header che visualizzerà il nome del prodotto
+			th.setAttribute("colspan",2);//rendo la riga larga come due colonnne
+			th.appendChild(document.createTextNode(Carrello.Nome)); //creo un nodo che inserisco nell'header col nome del prodotto
+			tr.appendChild(th); //aggiungo l header prima creato alla riga
+			tab.appendChild(tr); //aggiungo alla tabella
+			
+			tr = document.createElement("tr"); //procedo con la riga per l immagine 
+			var center = document.createElement("center"); //creo un elemento html5 per intermediare con l immagine
+			var img = document.createElement("img"); //creo l immagine
+			img.src= "Imm/"+Carrello.NomeI; //assegno all immagine la sua giusta sorgente
+			td = document.createElement("td");//creo il table data dove mettere il tutto 
+			td.setAttribute("colspan",2);//rendo la riga larga come due colonnne
+			td.appendChild(center); //aggiungo al td l involucro dell immagine
+			center.appendChild(img); //all involucro dell immagine concateno finalmente l'immagine 
+			tr.appendChild(td); //inserisco il tutto nella riga per l immagine)
+			tab.appendChild(tr); // aggiungo alla tabella
+			
+			tr = document.createElement ("tr");//creo la riga per il codice
+			td = document.createElement("td"); //creo l elemento dove effettivamete mettero la label per poi mettere il codice
+			td.appendChild(document.createTextNode("Prezzo"));//inserisco la label
+			tr.appendChild(td);//aggiungo la label alla riga
+			td = document.createElement("td"); //creo un altro td per il codice vero e proprio
+			td.appendChild(document.createTextNode(Carrello.Prezzo));//inserisco il codice
+			tr.appendChild(td); //aggiungo nella riga l elemento
+			tab.appendChild(tr);
+			
+			tr = document.createElement ("tr");//creo la riga per il codice
+			td = document.createElement("td"); //creo l elemento dove effettivamete mettero la label per poi mettere il codice
+			td.appendChild(document.createTextNode("Codice"));//inserisco la label
+			tr.appendChild(td);//aggiungo la label alla riga
+			td = document.createElement("td"); //creo un altro td per il codice vero e proprio
+			td.appendChild(document.createTextNode(Carrello.Codice));//inserisco il codice
+			tr.appendChild(td); //aggiungo nella riga l elemento
+			tab.appendChild(tr);
+			
+			
+			
+			tr = document.createElement("tr");
+			td = document.createElement("td");
+			td.appendChild(document.createTextNode("Colore"));
+			tr.appendChild(td);//aggiungo la label alla riga
+			td = document.createElement("td"); //creo un altro td per il colore vero e proprio
+			td.appendChild(document.createTextNode(Carrello.ProdCol));
+			tr.appendChild(td);
+			tab.appendChild(tr);
+			
+			tr = document.createElement("tr");
+			td = document.createElement("td");
+			td.appendChild(document.createTextNode("Taglia"));
+			tr.appendChild(td);//aggiungo la label alla riga
+			td = document.createElement("td"); //creo un altro td per la taglia
+			td.appendChild(document.createTextNode(Carrello.ProdTag));
+			tr.appendChild(td);
+			tab.appendChild(tr);
+			
+			tr = document.createElement("tr");
+			td = document.createElement("td");
+			td.appendChild(document.createTextNode("Selezionati"));
+			tr.appendChild(td);//aggiungo la label alla riga
+			td = document.createElement("td"); 
+			td.appendChild(document.createTextNode(Carrello.Dispo));
+			tr.appendChild(td);
+			tab.appendChild(tr);
+			
+			
+			tr = document.createElement("tr");
+			td = document.createElement("td");
+			td.appendChild(document.createTextNode("Sesso"));
+			tr.appendChild(td);//aggiungo la label alla riga
+			td = document.createElement("td"); 
+			td.appendChild(document.createTextNode(Carrello.Sesso));
+			tr.appendChild(td);
+			tab.appendChild(tr);
+			
+			tr = document.createElement("tr"); //procedo con la riga per l immagine 
+			var center = document.createElement("center"); //creo un elemento html5 per inserire l'immagine centrale
+			var td = document.createElement("td"); //creo l immagine
+			td.appendChild(document.createTextNode("Elimina da carrello con la X --->"));
+			center.appendChild(td); 
+			tr.appendChild(center); //inserisco il tutto nella riga per l immagine)
+			
+			
+			//Eliminazione dell'elemento da quelli selezionati dal cliente
+			var center = document.createElement("center"); //creo un elemento html5 per inserire l'immagine centrale
+			var btn = document.createElement("input");
+			btn.setAttribute("type","image");
+			btn.setAttribute("id","busta");
+			btn.src="Imm/x.png";
+			btn.title="Elimina questo elemento";
+			btn.onclick = function ()
+			{
+// 				////alert(tab.getAttribute("id"));
+				div.removeChild(tab);
+//				valid.splice(q-1,1);//perchè q parte da 1 mentre l array parte da 0
+				//splice si usa sia per aggiungere che per eliminare, nell ultimo caso il secondo parametro è settato a 1
+//	 			///alert(q);// ricordando che q parte da 0
+//	 			///alert(valid);
+				//document.getElementById("ciao").innerHTML= prod.Codice +" "+ " " +prod.ProdCol+ " " + prod.ProdTag +" "+ numeroEle;// devi inserire il p con id ciao per vederlo
+				var xhttp = new XMLHttpRequest();
+				var query="?codice="+Carrello.Codice+"&colore="+Carrello.ProdCol+"&taglia="+Carrello.ProdTag;
+				xhttp.open("GET", "Delete" +query, true);
+	 			////alert("sto inviando"+ query);
+				xhttp.send();
+				
+				alert("Eliminato dal carrello :D");
+			}	
+			td = document.createElement("td");//creo il table data dove mettere il tutto 
+			td.appendChild(center); //aggiungo al td l involucro dell immagine
+			center.appendChild(btn); //all involucro dell immagine concateno finalmente l'immagine 
+			tr.appendChild(td); //inserisco il tutto nella riga per l immagine)
+			tab.appendChild(tr); // aggiungo alla tabella
+					//IMPLEMEMTNARE PER MANDARE SERLET E SALVARE L'ACQUISTO
+				
+			/*td = document.createElement("td");//per il carrello
+			center = document.createElement("center"); //Involucro per il carrello
+			td.appendChild(center); //incerisco l involucro dell input
+			center.appendChild(btn); //nserisco l input nell involucrp
+			tr.appendChild(td);//inserisco involucro td con l involucro nella riga
+			tab.appendChild(tr);//aggiungo la riga con l involucro all interno della tabella
+			*/
+			div.appendChild(tab);//aggiungo la tabella creata nel suo div
+			return ((Carrello.Prezzo+0)*(Carrello.Dispo+0));
+		}

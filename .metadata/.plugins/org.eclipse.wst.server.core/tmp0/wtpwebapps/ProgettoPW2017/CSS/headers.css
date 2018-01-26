@@ -1,0 +1,114 @@
+@CHARSET "UTF-8";
+
+@media screen and (max-width: 680px) 
+{
+	.ricerca
+	{
+		display:none;
+	}
+}
+
+header
+{
+	border:1px solid black;
+}
+
+body
+{
+	height:100%;
+	width:99%;
+}
+
+input
+{
+	border-radius:10px;
+	border-color: green;
+	background: transparent;
+}
+
+
+
+table th
+{
+	border:1px solid black;
+	width: 20%;
+}
+
+th.ricerca
+{
+	text-align: center;
+}
+
+#ricercabar
+{
+	width: 40%;
+	height: 5%;
+/* 	margin-top:1%; */
+}
+
+.logo
+{
+	width:7%;	
+}
+
+#logo
+{
+	margin: 4%;
+	width: 85%;
+}
+
+#lente
+{
+/* 	margin-top:1%; */
+	margin-left:5%;
+	height: 5%;
+	width: 10%;
+}
+
+table th.accesso
+{
+	width:25%;
+}
+
+table th.accesso h3
+{
+	margin-top:5%;
+	margin-bot:0;
+}
+
+table th.accesso input
+{
+	color: green;
+	width:30%;
+	margin: 0px 8%; 
+}
+
+table th.cart
+{
+	width:10%;
+}
+
+table th #cart
+{
+	width: 30%;
+	heigth: 30%;
+	margin:2% 10% 2% 10%;
+}
+
+table th #testo
+{
+	display:block;
+	margin-top:5%;
+	color: green;
+}
+
+ table th.cart a:link, visited, hover, active
+{
+    text-decoration: none;
+}
+
+table th.accesso a:link, visited, hover, active
+{
+    text-decoration: none;
+}
+

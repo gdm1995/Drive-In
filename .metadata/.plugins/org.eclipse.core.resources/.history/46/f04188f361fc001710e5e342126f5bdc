@@ -1,0 +1,51 @@
+/**
+ * Gestisce l'inserimento e la cancellazione dei prodotti visualizzati all'interno del sito
+ * 
+ * @param sol Indica il tipo di oggetto ricercato, può essere TUTTO, Scarpa , oppure null in base a quello che si sta
+ *            cercando. In caso di null stiamo utilizzando la ricerca di un prodotto specifico utilizzando una stringa
+ * @param sesso Indica il sesso di un determinato oggetto può essere M (per uomo), F (per donna) oppure null (se stiamo
+ *            cercando un prodotto tramite una stringa)
+ * @param stringa Se stiamo cercando un prodotto tramite una stringa, i primi due valori parametrici di cambio.js
+ *            dovranno essere nulli, la ricerca verrà effettuata solo in base alla stringa passata
+ * @param val Indica quale utente sta selezionando i prodotti e può essere 0 (in tal caso si tratta di un utente
+ *            normale), oppure 1 (in tal caso si tratta di un amministratore)
+ */
+
+function cambio(sol, sesso, stringa, val)
+{
+	// var txt= "";
+//	var img1 = document.getElementById("img2");
+	var div10 = document.getElementById("showing");
+	div10.removeChild(document.getElementById("img1"));
+	var xhttp = new XMLHttpRequest();
+	// alert("mi hai passato"+sol+sesso+stringa+val);
+	xhttp.onreadystatechange = function()
+	{
+		if (this.readyState == 4 && this.status == 200)
+		{
+//			alert("sto ricevendo la seguente risposta " + this.responseText); // ricevo un oggetto JSON
+			obj = JSON.parse(this.responseText);
+			
+//			alert("numero di oggetti"+ obj.prodotti.length);
+			clearTable(valid.length);
+			// w= obj.prodotti.length; //salvo in una variabile globale il numero di elementi precedentemente inseriti
+			for (var i = 0; i < obj.prodotti.length; i++)
+			{ 
+				/*
+				 * txt+="<tr>" txt+= "<td>"+ obj.prodotti[i].Nomeimg; txt+= "<td>"+ obj.prodotti[i].ProdTag; txt+= "<td>"+
+				 * obj.prodotti[i].codice; txt+= "<td>"+ obj.prodotti[i].ProdCol; txt+= "<td>"+
+				 * obj.prodotti[i].Sesso; txt+= "<td>"+ obj.prodotti[i].disp; txt+="</tr>"
+				 */
+//				 alert(obj.prodotti[i].codice);
+				 addProdotto(obj.prodotti[i], i + 1, val);
+			}
+			/*
+			 * txt+= "</table>" document.getElementById("demo").innerHTML= txt;
+			 */
+		}
+	};
+	var query = "?art=" + sol + "&sesso=" + sesso + "&stringa=" + stringa;
+	xhttp.open("GET", "Prodotto" + query, true);
+	// //alert("sto inviando"+ query);
+	xhttp.send();
+}

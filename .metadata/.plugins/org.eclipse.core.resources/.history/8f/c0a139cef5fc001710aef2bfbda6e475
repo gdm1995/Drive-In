@@ -1,0 +1,87 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Language" content="it">
+<meta name=”description” content=”Drive-in.com–Negozio_di_scarpe_online”>
+<meta name="author" content="Giulio Di Maria, Matteo Volpe">
+<meta name="keywords" content="shoes, Drive-in, italian-style">
+<meta name="viewport"
+	content="width=device-width, user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" href="CSS/benvenuto.css">
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="cambio.js"></script>
+<script type="text/javascript" src="addProdotto.js"></script>
+<script type="text/javascript" src="clearTable.js"></script>
+<title>Home page Drive-In</title>
+<script>
+	var #Ordine = 0;
+	var valid =
+	[];//variabile per sapere il totale degli elementi realmente caricati precedentemente
+</script>
+</head>
+
+<body background="Imm/bianco.jpg">
+	<!-- 			<script type="text/javascript">window.onload=(cambio("Tutto","T",null,0))</script> -->
+	<%
+		if (session.getAttribute("user") != null) {
+	%>
+	<%@include file="HeaderLogged.jsp"%>
+	<%
+		} else {
+	%>
+	<%@ include file="Header.jsp"%>
+	<%
+		}
+	%>
+	<!--       Testing		 -->
+	<%-- 		<% --%>
+	<!-- // 			String id = (String) session.getAttribute("id"); -->
+	<!-- // 			String nome = (String) session.getAttribute("user"); -->
+	<%-- 		%> --%>
+	<!-- 		<br> -->
+	<!-- 		Il tuo ID: -->
+	<%-- 		<%=id %><br> --%>
+	<!-- 		User: -->
+	<%-- 		<%=nome %><br> --%>
+	<!-- 		Scegli un articoli: -->
+	<!-- 		<form action="Prodotto"> -->
+	<!-- 			<select id="selezione"  onchange="cambio(this.value)" > -->
+	<!-- 				<option value="Borsa"> Borsa </option> -->
+	<!-- 				<option value="Scarpa"> Scarpa </option> -->
+	<!-- 			</select> -->
+	<!-- 		</form> -->
+
+	<div id="showing">
+		<aside>
+			<%@ include file="Aside.jsp"%>
+		</aside>
+		<img src="Imm/BorseDonna.PNG" alt="BorsePromo" width="38%" vspace="20"
+			onclick="cancella()" id="img1">
+		<script type="text/javascript">
+			function cancella()
+			{
+				document.getElementById("img2").style.display = "none";
+				document.getElementById("img1").style.display = "none";
+				cambio('Borsa', 'D', null, 0);
+			}
+		</script>
+		<img src="Imm/ScarpeUomo.PNG" alt="BorsePromo" width="42%" vspace="10"
+			onclick="cancella1()" id="img2">
+		<script type="text/javascript">
+			function cancella1()
+			{
+				document.getElementById("img1").style.display = "none";
+				document.getElementById("img2").style.display = "none";
+				cambio('Scarpa', 'M', null, 0);
+			}
+		</script>
+	</div>
+	<footer>
+		<%@ include file="Footer.jsp"%>
+	</footer>
+</body>
+</html>
