@@ -12,12 +12,14 @@
 <link rel="stylesheet" href="CSS/Profile.css">
 <title>Pagina di conferma</title>
 <script type="text/javascript" src="caricaProfilo2.js"></script>
-
+<script type="text/javascript"> alert("Acquisto completato ");</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body background="Imm/bianco.jpg">
 <a href="Benvenuto.jsp"><img width="10%" title="Home"
 		src="Imm/Logo.png"></a>
+		<h1 align="center">Grazie per aver acquistato <i class="fa fa-thumbs-up"></i></h1>
 		<h1 align="center">Riepilogo ordine</h1>
 	<center><div id="showing">	
 	<p>Numero ordine: </p>
@@ -28,9 +30,9 @@
 		</script><p></p>
 	</form>
 	</div>
-	<div id="showing1"><script type="text/javascript">window.onload=(caricaProfilo2())</script></div>
+	<div id="showing1"><script type="text/javascript">window.onload=(caricaProfilo2(nOrdine))</script></div>
 	<form action="Benvenuto.jsp" method="get">
-		<center style="clear: both;"><button id="bottone">Torna alla Home</button></center></center>
+		<center style="clear: both;"><button id="bottone" onClick="Arrivederci()">Torna alla Home</button></center></center>
 	<footer>
 		<%@ include file="Footer.jsp"%>
 	</footer>

@@ -15,7 +15,7 @@
 </head>
 
 <body background="Imm/bianco.jpg">
-<a href="Carrello.jsp"><img id="ritorno" title="Home"
+<a href="Carrello.jsp"><img id="ritorno" title="Carrello"
 		src="Imm/FRECCIA.png"></a>
 		<h1 align="center">Conferma dei propri dati</h1>
 	<center><div id="showing">	

@@ -6,7 +6,6 @@ package Model;
  */
 public class Prodotti
 {
-
 	private String codice;
 	private String prodCol;
 	private String prodTag;
@@ -17,6 +16,14 @@ public class Prodotti
 	private String nomeImg;
 
 	// codice
+	
+	public String getNomeImg() {
+		return nomeImg;
+	}
+
+	public void setNomeImg(String nomeImg) {
+		this.nomeImg = nomeImg;
+	}
 	public String getCodice()
 	{
 		return codice;
