@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+        
     <wb-module deploy-name="ProgettoPW2017">
+                
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+                
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="ProgettoPW2017"/>
+                
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/WebContent"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Testing"/>
+                
         <property name="java-output-path" value="/ProgettoPW2017/build/classes"/>
+        <property name="context-root" value="ProgettoPW2017"/>
+            
     </wb-module>
+    
 </project-modules>
