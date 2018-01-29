@@ -122,6 +122,8 @@ public class ModificaProdottoTest extends TestCase
 	}
 	
 	
+	
+	
 	@Test
 	public void testModificaColore() throws SQLException
 	{
@@ -295,6 +297,11 @@ public class ModificaProdottoTest extends TestCase
 	}
 	
 	
+	
+	
+	
+	
+	
 	@Test
 	public void testModificaQuantita() throws SQLException
 	{
@@ -383,6 +390,9 @@ public class ModificaProdottoTest extends TestCase
 	}
 	
 	
+	
+	
+	
 
 	@Test
 	public void testModificaSesso() throws SQLException
@@ -410,7 +420,7 @@ public class ModificaProdottoTest extends TestCase
 			prep.setString(2, colore);
 			prep.setString(3, taglia);
 			prep.setString(4, sesso);
-			
+		
 			prep.executeUpdate();
 			conn.commit();
 			

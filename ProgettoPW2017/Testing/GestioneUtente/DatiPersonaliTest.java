@@ -55,7 +55,7 @@ public class DatiPersonaliTest extends TestCase
 		try
 		{
 			String insert ="INSERT INTO "+DatiPersonaliTest.TABLE_NAME + "(Username, Nome, Cognome, Password)" + "VALUES (?, ?, ?, ?)";
-			
+			conn = DriverManagerConnectionPool.getConnection();
 			prep = conn.prepareStatement(insert);
 			
 			prep.setString(1, Username);
@@ -86,6 +86,91 @@ public class DatiPersonaliTest extends TestCase
 				try
 				{
 					assertEquals(nomenuovo, rs.getString("Nome"));
+				}catch(Exception e)
+				{
+					e.printStackTrace();
+				}
+				
+			}
+			// elimino l'utente inserito
+			String delete = "DELETE FROM utente WHERE Username=?";
+			prep = conn.prepareStatement(delete);
+			prep.setString(1, Username);
+			prep.executeUpdate();
+			conn.commit();
+			prep.close();
+		}
+		finally
+		{
+		try
+		{
+			if(prep != null)
+			{
+				prep.close();
+			}
+		}finally
+		{
+			if(conn != null)
+			{
+				conn.close();
+			}
+		}
+	}
+		
+	}
+	
+	
+// da verificare
+	@Test
+	public void testAggiornaDatiPersonaliNomeAssente() throws SQLException
+	{
+		// inserisco un nuovo utente e successivamente effettuo
+		// la modifica e dopo di che verifico se effettivamente 
+		// è statto modificato
+		
+		
+		String Username ="Mattheos65";
+		String nome ="Mirco";
+		String cognome ="lorto";
+		String password ="Gikkino98";
+		
+		conn = null;
+		prep = null;
+		
+		try
+		{
+			String insert ="INSERT INTO "+DatiPersonaliTest.TABLE_NAME + "(Username, Nome, Cognome, Password)" + "VALUES (?, ?, ?, ?)";
+			conn = DriverManagerConnectionPool.getConnection();
+			prep = conn.prepareStatement(insert);
+			
+			prep.setString(1, Username);
+			prep.setString(2, nome);
+			prep.setString(3, cognome);
+			prep.setString(4, password);
+			
+			
+			prep.executeUpdate();
+			conn.commit();
+			
+			// ora una volta inserito, lo provo a modificare
+			// con la classe di test
+			String nomenuovo = "asedwqasedfrtghfs";
+			personali.modificaNome(Username, nomenuovo);
+			
+			
+			// verifico effettivamente se è stato modificato
+			
+			String selezione = "SELECT Nome FROM utente WHERE Username =?";
+			prep = conn.prepareStatement(selezione);
+			prep.setString(1, Username);
+			
+			ResultSet rs = prep.executeQuery();
+			conn.commit();
+			while (rs.next())
+			{
+				try
+				{
+					assertNotEquals(nomenuovo, rs.getString("Nome"));
 				}catch(Exception e)
 				{
 					e.printStackTrace();
@@ -201,8 +286,9 @@ public class DatiPersonaliTest extends TestCase
 			}
 		}
 	}
-		
 	}
+		
+	
 
 	
 	@Test

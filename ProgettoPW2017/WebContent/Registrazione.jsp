@@ -25,18 +25,19 @@ function password(password)
 }
 function name(nome)
 {
-	var confronto = /^[A-Za-z0-9]+$/; 
+	var confronto = ('^[A-Za-z0-9]+$');
 	return verifica(nome, confronto); 
 }
 function cognome(cognome)
 {
-	var confronto = /^[A-Za-z0-9]+$/; 
+	var confronto = ('^[A-Za-z0-9]+$'); 
 	return verifica(cognome, confronto); 
 }
 function indirizzo(indirizzo)
 {
-	var confronto = /^+[A-Za-z0-9]+$/; 
-// 	var confronto=/^(\w)+\s+(\w)+\s+(\d){1,4}$/;   	
+	//var confronto=/^(\w)+\s+(\w)+\s+(\d){1,4}$/;  
+
+	var confronto = ('^[A-Za-z0-9]+$'); 
 	return verifica(indirizzo, confronto);
 }
 

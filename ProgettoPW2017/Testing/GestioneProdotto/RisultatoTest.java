@@ -247,6 +247,54 @@ public class RisultatoTest extends TestCase
 		}
 	}
 	
+	
+	
+	
+	@Test
+	public void testFindSessoNonEsistente()  throws SQLException
+	{
+		// il testo consistera nel inserire un elemento
+		// con una determinata specifica
+		// successivamente andando a testare la classe, verifico
+		// se esso vienre ritornato
+		
+		String codice="H89";
+		String colore = "Ciano";
+		String taglia = "XL";
+		String sesso = "H";
+		
+		
+		conn = null;
+		prep = null;
+		
+		try
+		{
+			conn = DriverManagerConnectionPool.getConnection();
+			
+			
+			Collection<Prodotti> prodotto = new LinkedList<Prodotti>(); // arrayList di tipo prodotto
+			
+			prodotto =risultato.doAll(sesso);
+			assertEquals(true, prodotto.isEmpty());
+		}finally
+		{
+			try
+			{
+				if(prep != null)
+				{
+					prep.close();
+				}
+			}finally
+			{
+				if(conn != null)
+				{
+					conn.close();
+				}
+			}
+		}
+	}
+	
+	
 	@Test
 	public void testjustAll()  throws SQLException
 	{
