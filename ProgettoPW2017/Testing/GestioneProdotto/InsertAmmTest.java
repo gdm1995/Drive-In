@@ -23,7 +23,6 @@ public class InsertAmmTest extends TestCase
 
 	private InsertAmmDAO amministratore;
 	
-	
 	protected void setUp() throws Exception
 	{
 		super.setUp();

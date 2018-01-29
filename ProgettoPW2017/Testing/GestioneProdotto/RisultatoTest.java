@@ -1,7 +1,5 @@
 package GestioneProdotto;
 
-import static org.junit.Assert.*;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -12,11 +10,8 @@ import java.util.LinkedList;
 import org.junit.Test;
 
 import Connessioni.DriverManagerConnectionPool;
-import Controller.Prodotto;
-import GestineCarrello.SelezionatiTest;
 import Model.Prodotti;
 import OperazioniDAO.RisultatoDAO;
-import OperazioniDAO.SelezionatiDAO;
 import junit.framework.TestCase;
 
 public class RisultatoTest extends TestCase 
