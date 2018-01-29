@@ -37,8 +37,10 @@ public class SelezionatiTest extends TestCase
 		selezionati=null;	
 	}
 	
+	
+			
 	@Test
-	public void test() throws SQLException
+	public void testValido() throws SQLException
 	{
 		String Username = "MB";
 		String codice = "K2";
@@ -105,6 +107,59 @@ public class SelezionatiTest extends TestCase
 			}
 		}
 	}
+	
+	
+	
+@Test
+public void testNessunProdottoSelezionato() throws SQLException
+{
+	String Username = "MB";
+	String codice = "K2";
+	String colore = "Azzurro";
+	String taglia = "34";
+	String numero = "2";
+	
+	// effettuo l'inserimento e successivamente
+	// verifico tramite la classe se è contenuto nella 
+	// lista di prodotti di un determinato user
+	
+	conn = null;
+	prep = null;
+	
+	try
+	{
+		
+		// effettuo la query
+		ArrayList<Selezionati> sel = new ArrayList<Selezionati>(); // arrayList di tipo prodotto
+		
+		sel = selezionati.doRicerca(Username);
+		assertEquals(true, sel.isEmpty());
+		/*
+		for(int i=0; i<sel.size(); i++)
+		{
+			assertEquals(codice,sel.get(i).getCodice());
+			assertEquals(colore, sel.get(i).getProdCol());
+			assertEquals(taglia, sel.get(i).getProdTag());
+		}
+*/
+		
+	}finally
+	{
+		try
+		{
+			if(prep != null)
+			{
+				prep.close();
+			}
+		}finally
+		{
+			if(conn != null)
+			{
+				conn.close();
+			}
+		}
+	}
+}
 			
 			
 			

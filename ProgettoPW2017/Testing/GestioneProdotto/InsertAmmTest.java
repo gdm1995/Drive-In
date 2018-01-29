@@ -98,5 +98,201 @@ public class InsertAmmTest extends TestCase
 		}
 		
 	}
+	
+	
+	
+	
+	
+	@Test
+	public void testInsertProdottiAmmCodiceMancante() throws SQLException
+	{
+		String codice = "A118";
+		String colore = "Bianco";
+		String taglia = "M";
+		
+		amministratore.doInsert(null, colore, taglia, null, null, null, null, null, null );
+		conn = null;
+		prep= null;
+		try
+		{
+			conn = DriverManagerConnectionPool.getConnection();
+			String query="SELECT * " +"FROM "+ InsertAmmTest.TABLE_NAME + " WHERE Codice = ? AND ProdCol = ? AND ProdTag = ?";
+			prep = conn.prepareStatement(query);
+			prep.setString(1, codice);
+			prep.setString(2, colore);
+			prep.setString(3, taglia);
+			
+			ResultSet rs = prep.executeQuery();
+			conn.commit();
+			
+			if(!rs.next())
+			{
+				System.out.println("Errore");
+			}
+			else
+			{
+				String codiceTest = rs.getString("Codice");
+				String coloreTest = rs.getString("ProdCol");
+				String tagliaTest = rs.getString("ProdTag");
+				
+				assertNotEquals(codiceTest, codice);
+				assertNotEquals(coloreTest, colore);
+				assertNotEquals(tagliaTest, taglia);
+			}
+			String elimina = "DELETE FROM "+ InsertAmmTest.TABLE_NAME + " WHERE (Codice = ? and ProdCol = ? and ProdTag = ?)";
+			prep = conn.prepareStatement(elimina);
+			prep.setString(1, codice);
+			prep.setString(2, colore);
+			prep.setString(3, taglia);
+			prep.executeUpdate();
+			conn.commit();
+			prep.close();
+		}finally
+		{
+			try
+			{
+				if(prep != null)
+				{
+					prep.close();
+				}
+			}finally
+			{
+				if(conn != null)
+				{
+					conn.close();
+				}
+			}
+		}
+		
+	}
+
+	
+	@Test
+	public void testInsertProdottiAmmColoreMancante() throws SQLException
+	{
+		String codice = "A118";
+		String colore = "Bianco";
+		String taglia = "M";
+		
+		amministratore.doInsert(codice, null, taglia, null, null, null, null, null, null );
+		conn = null;
+		prep= null;
+		try
+		{
+			conn = DriverManagerConnectionPool.getConnection();
+			String query="SELECT * " +"FROM "+ InsertAmmTest.TABLE_NAME + " WHERE Codice = ? AND ProdCol = ? AND ProdTag = ?";
+			prep = conn.prepareStatement(query);
+			prep.setString(1, codice);
+			prep.setString(2, colore);
+			prep.setString(3, taglia);
+			
+			ResultSet rs = prep.executeQuery();
+			conn.commit();
+			
+			if(!rs.next())
+			{
+				System.out.println("Errore");
+			}
+			else
+			{
+				String codiceTest = rs.getString("Codice");
+				String coloreTest = rs.getString("ProdCol");
+				String tagliaTest = rs.getString("ProdTag");
+				
+				assertNotEquals(codiceTest, codice);
+				assertNotEquals(coloreTest, colore);
+				assertNotEquals(tagliaTest, taglia);
+			}
+			String elimina = "DELETE FROM "+ InsertAmmTest.TABLE_NAME + " WHERE (Codice = ? and ProdCol = ? and ProdTag = ?)";
+			prep = conn.prepareStatement(elimina);
+			prep.setString(1, codice);
+			prep.setString(2, colore);
+			prep.setString(3, taglia);
+			prep.executeUpdate();
+			conn.commit();
+			prep.close();
+		}finally
+		{
+			try
+			{
+				if(prep != null)
+				{
+					prep.close();
+				}
+			}finally
+			{
+				if(conn != null)
+				{
+					conn.close();
+				}
+			}
+		}
+		
+	}
+	
+	
+
+	@Test
+	public void testInsertProdottiAmmTagliaMancante() throws SQLException
+	{
+		String codice = "A118";
+		String colore = "Bianco";
+		String taglia = "M";
+		
+		amministratore.doInsert(codice, colore, null, null, null, null, null, null, null );
+		conn = null;
+		prep= null;
+		try
+		{
+			conn = DriverManagerConnectionPool.getConnection();
+			String query="SELECT * " +"FROM "+ InsertAmmTest.TABLE_NAME + " WHERE Codice = ? AND ProdCol = ? AND ProdTag = ?";
+			prep = conn.prepareStatement(query);
+			prep.setString(1, codice);
+			prep.setString(2, colore);
+			prep.setString(3, taglia);
+			
+			ResultSet rs = prep.executeQuery();
+			conn.commit();
+			
+			if(!rs.next())
+			{
+				System.out.println("Errore");
+			}
+			else
+			{
+				String codiceTest = rs.getString("Codice");
+				String coloreTest = rs.getString("ProdCol");
+				String tagliaTest = rs.getString("ProdTag");
+				
+				assertNotEquals(codiceTest, codice);
+				assertNotEquals(coloreTest, colore);
+				assertNotEquals(tagliaTest, taglia);
+			}
+			String elimina = "DELETE FROM "+ InsertAmmTest.TABLE_NAME + " WHERE (Codice = ? and ProdCol = ? and ProdTag = ?)";
+			prep = conn.prepareStatement(elimina);
+			prep.setString(1, codice);
+			prep.setString(2, colore);
+			prep.setString(3, taglia);
+			prep.executeUpdate();
+			conn.commit();
+			prep.close();
+		}finally
+		{
+			try
+			{
+				if(prep != null)
+				{
+					prep.close();
+				}
+			}finally
+			{
+				if(conn != null)
+				{
+					conn.close();
+				}
+			}
+		}
+		
+	}
 
 }

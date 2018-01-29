@@ -89,6 +89,7 @@
 			} else
 			{
 				return false;
+				
 			}
 		}
 		function isEmpty(field)
